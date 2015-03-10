@@ -1,0 +1,6 @@
+F:\PROGRAMY\C#\MojProjekt\MojProjekt\bin\Debug\MojProjekt.dll
+F:\PROGRAMY\C#\MojProjekt\MojProjekt\bin\Debug\MojProjekt.pdb
+F:\PROGRAMY\C#\MojProjekt\MojProjekt\obj\Debug\MojProjekt.csprojResolveAssemblyReference.cache
+F:\PROGRAMY\C#\MojProjekt\MojProjekt\obj\Debug\MojProjekt.dll
+F:\PROGRAMY\C#\MojProjekt\MojProjekt\obj\Debug\MojProjekt.pdb
+F:\PROGRAMY\C#\MojProjekt\MojProjekt\bin\Debug\Oracle.DataAccess.dll

@@ -1,0 +1,12 @@
+F:\PROGRAMY\C#\MojProjekt\MojProjekt.Test\bin\Debug\MojProjekt.Test.dll
+F:\PROGRAMY\C#\MojProjekt\MojProjekt.Test\bin\Debug\MojProjekt.Test.pdb
+F:\PROGRAMY\C#\MojProjekt\MojProjekt.Test\bin\Debug\MojProjekt.dll
+F:\PROGRAMY\C#\MojProjekt\MojProjekt.Test\bin\Debug\MojProjekt.pdb
+F:\PROGRAMY\C#\MojProjekt\MojProjekt.Test\obj\Debug\MojProjekt.Test.csprojResolveAssemblyReference.cache
+F:\PROGRAMY\C#\MojProjekt\MojProjekt.Test\obj\Debug\MojProjekt.Test.dll
+F:\PROGRAMY\C#\MojProjekt\MojProjekt.Test\obj\Debug\MojProjekt.Test.pdb
+F:\PROGRAMY\C#\MojProjekt\MojProjekt.Test\bin\Debug\Database1.mdf
+F:\PROGRAMY\C#\MojProjekt\MojProjekt.Test\bin\Debug\vjslib.dll
+F:\PROGRAMY\C#\MojProjekt\MojProjekt.Test\bin\Debug\vjscor.dll
+F:\PROGRAMY\C#\MojProjekt\MojProjekt.Test\bin\Debug\vjsvwaux.dll
+F:\PROGRAMY\C#\MojProjekt\MojProjekt.Test\bin\Debug\vjslibcw.dll
