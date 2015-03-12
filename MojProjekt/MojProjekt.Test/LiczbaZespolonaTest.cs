@@ -19,105 +19,270 @@ namespace MojProjekt.Test
         public void TworzenieObiektuTest()
         {
             LiczbaZespolona liczbazespolona = new LiczbaZespolona(1.1, 2.2);
-            LiczbaZespolona wynik = new LiczbaZespolona(2.3, 4.5);
-            //sprawdzanie poprawnosci utworzonych typow
-            //najpierw nalezy sprawdzic czy liczbazespolona nie jest null
             Assert.IsNotNull(liczbazespolona);
-            //oraz wynik
-            Assert.IsNotNull(wynik);
-            Assert.IsInstanceOfType(liczbazespolona, typeof(LiczbaZespolona));
-            Assert.IsInstanceOfType(liczbazespolona.Dodaj(1.2, 2.3), typeof(LiczbaZespolona));
-            Assert.IsInstanceOfType(liczbazespolona.Odejmij(1.2, 2.3), typeof(LiczbaZespolona));
-            Assert.IsNotInstanceOfType(liczbazespolona.Dodaj(1.2, 2.3), typeof(double));
-            Assert.IsNotInstanceOfType(liczbazespolona.Odejmij(1.2, 2.3), typeof(double));
         }
 
-        [TestCategory("Kalkulator")]
+        [TestCategory("Tworzenie obiektu")]
         [TestMethod]
-        public void DodawanieTest()
+        public void PrzypisanieWartosciRzeczywistaTest()
+        {
+            LiczbaZespolona liczbazespolona = new LiczbaZespolona(1.1, 2.2);
+            Assert.AreEqual(1.1, liczbazespolona.PobierzRzeczywista());
+        }
+
+        [TestCategory("Tworzenie obiektu")]
+        [TestMethod]
+        public void PrzypisanieWartosciUrojonaTest()
+        {
+            LiczbaZespolona liczbazespolona = new LiczbaZespolona(1.1, 2.2);
+            Assert.AreEqual(2.2, liczbazespolona.PobierzZespolona());
+        }
+
+        [TestCategory("Sprawdzanie instacji klasy")]
+        [TestMethod]
+        public void NotInstancjaKlasyTest()
+        {
+            LiczbaZespolona liczbazespolona = new LiczbaZespolona(-1.1, 2.2);
+            Assert.IsNotInstanceOfType(liczbazespolona, typeof(double));
+        }
+
+        [TestCategory("Sprawdzanie instacji klasy")]
+        [TestMethod]
+        public void InstancjaKlasyTest()
+        {
+            LiczbaZespolona liczbazespolona = new LiczbaZespolona(-1.1, 2.2);
+            Assert.IsInstanceOfType(liczbazespolona, typeof(LiczbaZespolona));
+        }
+
+        [TestCategory("Sprawdzanie instacji klasy")]
+        [TestMethod]
+        public void InstancjaKlasyDodajTest()
+        {
+            LiczbaZespolona liczbazespolona = new LiczbaZespolona(-1.1, 2.2);
+            Assert.IsInstanceOfType(liczbazespolona.Dodaj(1.2, 2.3), typeof(LiczbaZespolona));
+        }
+
+        [TestCategory("Sprawdzanie instacji klasy")]
+        [TestMethod]
+        public void InstancjaKlasyOdejmijTest()
+        {
+            LiczbaZespolona liczbazespolona = new LiczbaZespolona(-1.1, 2.2);
+            Assert.IsInstanceOfType(liczbazespolona.Odejmij(1.2, 2.3), typeof(LiczbaZespolona));
+        }
+
+        [TestCategory("Sprawdzanie instacji klasy")]
+        [TestMethod]
+        public void InstancjaKlasyPomnozTest()
+        {
+            LiczbaZespolona liczbazespolona = new LiczbaZespolona(-1.1, 2.2);
+            Assert.IsInstanceOfType(liczbazespolona.Pomnoz(1.2, 2.3), typeof(LiczbaZespolona));
+        }
+
+        [TestCategory("Sprawdzanie instacji klasy")]
+        [TestMethod]
+        public void InstancjaKlasyPodzielTest()
+        {
+            LiczbaZespolona liczbazespolona = new LiczbaZespolona(-1.1, 2.2);
+            Assert.IsInstanceOfType(liczbazespolona.Podziel(1.2, 2.3), typeof(LiczbaZespolona));
+        }
+
+        [TestCategory("KalkulatorDodawanie")]
+        [TestMethod]
+        public void DodawanieDodatnichTest()
         {
             LiczbaZespolona liczbazespolona = new LiczbaZespolona(1.1, 2.2);
             LiczbaZespolona wynik = new LiczbaZespolona(2.3,4.5);
-            //Sprawdzanie poprawnosci dzialan
             Assert.IsTrue(wynik.Equals(liczbazespolona.Dodaj(1.2, 2.3)));
-            Assert.IsFalse(wynik.Equals(liczbazespolona.Dodaj(1.2, 2.30000000001)));
-            Assert.AreEqual(wynik.PobierzRzeczywista(), liczbazespolona.Dodaj(1.2, 2.3).PobierzRzeczywista());
-            Assert.AreEqual(wynik.PobierzZespolona(), liczbazespolona.Dodaj(1.2, 2.3).PobierzZespolona());
-            
-            wynik = new LiczbaZespolona(-0.1, 4.5);
-            Assert.IsTrue(wynik.Equals(liczbazespolona.Dodaj(-1.2, 2.3)));
-            Assert.IsFalse(wynik.Equals(liczbazespolona.Dodaj(-1.2000000001, 2.3)));
-            Assert.AreEqual(wynik.PobierzRzeczywista(), liczbazespolona.Dodaj(-1.2, 2.3).PobierzRzeczywista());
-            Assert.AreEqual(wynik.PobierzZespolona(), liczbazespolona.Dodaj(-1.2, 2.3).PobierzZespolona());
-
-            liczbazespolona = new LiczbaZespolona(1.12, 2.23);
-            wynik = new LiczbaZespolona(2.341, -0.102);
-            Assert.IsTrue(wynik.Equals(liczbazespolona.Dodaj(1.221, -2.332)));
-            Assert.IsFalse(wynik.Equals(liczbazespolona.Dodaj(-1.221, -2.332)));
-            Assert.AreEqual(wynik.PobierzRzeczywista(), liczbazespolona.Dodaj(1.221, -2.332).PobierzRzeczywista());
-            Assert.AreEqual(wynik.PobierzZespolona(), liczbazespolona.Dodaj(1.221, -2.332).PobierzZespolona());
-
-            liczbazespolona = new LiczbaZespolona(-0.532, -0.116);
-            wynik = new LiczbaZespolona(0.689, -2.448);
-            Assert.IsTrue(wynik.Equals(liczbazespolona.Dodaj(1.221, -2.332)));
-            Assert.AreEqual(wynik.PobierzRzeczywista(), liczbazespolona.Dodaj(1.221, -2.332).PobierzRzeczywista());
-            Assert.AreEqual(wynik.PobierzZespolona(), liczbazespolona.Dodaj(1.221, -2.332).PobierzZespolona());
-
-            liczbazespolona = new LiczbaZespolona(-2, 3);
-            wynik = new LiczbaZespolona(2, 2);
-            Assert.IsTrue(wynik.Equals(liczbazespolona.Dodaj(4, -1)));
-            Assert.AreEqual(wynik.PobierzRzeczywista(), liczbazespolona.Dodaj(4, -1).PobierzRzeczywista());
-            Assert.AreEqual(wynik.PobierzZespolona(), liczbazespolona.Dodaj(4, -1).PobierzZespolona());
-
-            liczbazespolona = new LiczbaZespolona(0, 0);
-            wynik = new LiczbaZespolona(0, 0);
-            Assert.IsTrue(wynik.Equals(liczbazespolona.Dodaj(0, 0)));
-            Assert.AreEqual(wynik.PobierzRzeczywista(), liczbazespolona.Dodaj(0, 0).PobierzRzeczywista());
-            Assert.AreEqual(wynik.PobierzZespolona(), liczbazespolona.Dodaj(0, 0).PobierzZespolona());
         }
-        
-        [TestCategory("Kalkulator")]
+
+        [TestCategory("KalkulatorDodawanie")]
         [TestMethod]
-        public void OdejmowanieTest()
+        public void DodawanieDodatnichNieprawidloweTest()
+        {
+            LiczbaZespolona liczbazespolona = new LiczbaZespolona(1.1, 2.2);
+            LiczbaZespolona wynik = new LiczbaZespolona(2.3, 4.5);
+            Assert.IsFalse(wynik.Equals(liczbazespolona.Dodaj(1.2, 2.30000000001)));
+        }
+
+        [TestCategory("KalkulatorDodawanie")]
+        [TestMethod]
+        public void DodawanieDodatnichRzeczywistaTest()
+        {
+            LiczbaZespolona liczbazespolona = new LiczbaZespolona(1.1, 2.2);
+            LiczbaZespolona wynik = new LiczbaZespolona(2.3, 4.5);
+            Assert.AreEqual(wynik.PobierzRzeczywista(), liczbazespolona.Dodaj(1.2, 2.3).PobierzRzeczywista());
+        }
+
+        [TestCategory("KalkulatorDodawanie")]
+        [TestMethod]
+        public void DodawanieDodatnichUrojonaTest()
+        {
+            LiczbaZespolona liczbazespolona = new LiczbaZespolona(1.1, 2.2);
+            LiczbaZespolona wynik = new LiczbaZespolona(2.3, 4.5);
+            Assert.AreEqual(wynik.PobierzZespolona(), liczbazespolona.Dodaj(1.2, 2.3).PobierzZespolona());
+        }
+
+        [TestCategory("KalkulatorDodawanie")]
+        [TestMethod]
+        public void DodawanieUjemnejTest()
+        {
+            LiczbaZespolona liczbazespolona = new LiczbaZespolona(1.1, 2.2);
+            LiczbaZespolona wynik = new LiczbaZespolona(-0.1, 4.5);
+            Assert.IsTrue(wynik.Equals(liczbazespolona.Dodaj(-1.2, 2.3)));
+        }
+
+        [TestCategory("KalkulatorDodawanie")]
+        [TestMethod]
+        public void DodawanieUjemnejNiepoprawneTest()
+        {
+            LiczbaZespolona liczbazespolona = new LiczbaZespolona(1.1, 2.2);
+            LiczbaZespolona wynik = new LiczbaZespolona(-0.1, 4.5);
+            Assert.IsFalse(wynik.Equals(liczbazespolona.Dodaj(-1.2000000001, 2.3))); 
+        }
+
+        [TestCategory("KalkulatorDodawanie")]
+        [TestMethod]
+        public void DodawanieUjemnejRzeczywistaTest()
+        {
+            LiczbaZespolona liczbazespolona = new LiczbaZespolona(1.1, 2.2);
+            LiczbaZespolona wynik = new LiczbaZespolona(-0.1, 4.5);
+            Assert.AreEqual(wynik.PobierzRzeczywista(), liczbazespolona.Dodaj(-1.2, 2.3).PobierzRzeczywista());
+        }
+
+        [TestCategory("KalkulatorDodawanie")]
+        [TestMethod]
+        public void DodawanieUjemnejUrojonaTest()
+        {
+            LiczbaZespolona liczbazespolona = new LiczbaZespolona(1.1, 2.2);
+            LiczbaZespolona wynik = new LiczbaZespolona(-0.1, 4.5);
+            Assert.AreEqual(wynik.PobierzZespolona(), liczbazespolona.Dodaj(-1.2, 2.3).PobierzZespolona());
+        }
+
+        [TestCategory("KalkulatorDodawanie")]
+        [TestMethod]
+        public void DodawanieDwochUjemnychTest()
+        {
+            LiczbaZespolona liczbazespolona = new LiczbaZespolona(-0.532, -0.116);
+            LiczbaZespolona wynik = new LiczbaZespolona(0.689, -2.448);
+            Assert.IsTrue(wynik.Equals(liczbazespolona.Dodaj(1.221, -2.332)));
+        }
+
+        [TestCategory("KalkulatorDodawanie")]
+        [TestMethod]
+        public void DodawanieDwochUjemnychRzeczywistaTest()
+        {
+            LiczbaZespolona liczbazespolona = new LiczbaZespolona(-0.532, -0.116);
+            LiczbaZespolona wynik = new LiczbaZespolona(0.689, -2.448);
+            Assert.AreEqual(wynik.PobierzRzeczywista(), liczbazespolona.Dodaj(1.221, -2.332).PobierzRzeczywista());
+        }
+
+        [TestCategory("KalkulatorDodawanie")]
+        [TestMethod]
+        public void DodawanieDwochUjemnychUrojonaTest()
+        {
+            LiczbaZespolona liczbazespolona = new LiczbaZespolona(-0.532, -0.116);
+            LiczbaZespolona wynik = new LiczbaZespolona(0.689, -2.448);
+            Assert.AreEqual(wynik.PobierzZespolona(), liczbazespolona.Dodaj(1.221, -2.332).PobierzZespolona());
+        }
+
+        [TestCategory("KalkulatorDodawanie")]
+        [TestMethod]
+        public void DodawanieZerTest()
+        {
+            LiczbaZespolona liczbazespolona = new LiczbaZespolona(0, 0);
+            LiczbaZespolona wynik = new LiczbaZespolona(0, 0);
+            Assert.IsTrue(wynik.Equals(liczbazespolona.Dodaj(0, 0)));
+        }
+
+
+        [TestCategory("KalkulatorOdemowanie")]
+        [TestMethod]
+        public void OdejmowanieDodatnichTest()
         {
             LiczbaZespolona liczbazespolona = new LiczbaZespolona(1.1, 2.2);
             LiczbaZespolona wynik = new LiczbaZespolona(-0.1, -0.1);
-            
             Assert.IsTrue(wynik.Equals(liczbazespolona.Odejmij(1.2, 2.3)));
+        }
+
+        [TestCategory("KalkulatorOdemowanie")]
+        [TestMethod]
+        public void OdejmowanieDodatnichNiepoprawneTest()
+        {
+            LiczbaZespolona liczbazespolona = new LiczbaZespolona(1.1, 2.2);
+            LiczbaZespolona wynik = new LiczbaZespolona(-0.1, -0.1);
             Assert.IsFalse(wynik.Equals(liczbazespolona.Odejmij(1.2, 2.30000000001)));
+        }
+
+        [TestCategory("KalkulatorOdemowanie")]
+        [TestMethod]
+        public void OdejmowanieDodatnichRzeczywisteTest()
+        {
+            LiczbaZespolona liczbazespolona = new LiczbaZespolona(1.1, 2.2);
+            LiczbaZespolona wynik = new LiczbaZespolona(-0.1, -0.1);
             Assert.AreEqual(wynik.PobierzRzeczywista(), liczbazespolona.Odejmij(1.2, 2.3).PobierzRzeczywista());
+        }
+
+        [TestCategory("KalkulatorOdemowanie")]
+        [TestMethod]
+        public void OdejmowanieDodatnichUrojoneTest()
+        {
+            LiczbaZespolona liczbazespolona = new LiczbaZespolona(1.1, 2.2);
+            LiczbaZespolona wynik = new LiczbaZespolona(-0.1, -0.1);
             Assert.AreEqual(wynik.PobierzZespolona(), liczbazespolona.Odejmij(1.2, 2.3).PobierzZespolona());
+        }
 
-            //poprawiac od tad
-            liczbazespolona = new LiczbaZespolona(-543.43, 2.309);
-            wynik = new LiczbaZespolona(-542.23, 0.009);
+        [TestCategory("KalkulatorOdemowanie")]
+        [TestMethod]
+        public void OdejmowanieUjemnejTest()
+        {
+            LiczbaZespolona liczbazespolona = new LiczbaZespolona(-543.43, 2.309);
+            LiczbaZespolona wynik = new LiczbaZespolona(-542.23, 0.009);
             Assert.IsTrue(wynik.Equals(liczbazespolona.Odejmij(-1.2, 2.3)));
-            Assert.AreEqual(wynik.PobierzRzeczywista(), liczbazespolona.Odejmij(-1.2, 2.3).PobierzRzeczywista());
+        }
+
+        [TestCategory("KalkulatorOdemowanie")]
+        [TestMethod]
+        public void OdejmowanieUjemnejRzeczywistaTest()
+        {
+            LiczbaZespolona liczbazespolona = new LiczbaZespolona(-543.43, 2.309);
+            LiczbaZespolona wynik = new LiczbaZespolona(-542.23, 0.009);
+            Assert.IsTrue(wynik.Equals(liczbazespolona.Odejmij(-1.2, 2.3)));
+        }
+
+        [TestCategory("KalkulatorOdemowanie")]
+        [TestMethod]
+        public void OdejmowanieUjemnejUrojonaTest()
+        {
+            LiczbaZespolona liczbazespolona = new LiczbaZespolona(-543.43, 2.309);
+            LiczbaZespolona wynik = new LiczbaZespolona(-542.23, 0.009);
             Assert.AreEqual(wynik.PobierzZespolona(), liczbazespolona.Odejmij(-1.2, 2.3).PobierzZespolona());
+        }
 
-            liczbazespolona = new LiczbaZespolona(1.12, 2.23);
-            wynik = new LiczbaZespolona(-0.101, 4.562);
+        [TestCategory("KalkulatorOdemowanie")]
+        [TestMethod]
+        public void OdejmowanieDwieUjemnejTest()
+        {
+            LiczbaZespolona liczbazespolona = new LiczbaZespolona(-0.532, -0.116);
+            LiczbaZespolona wynik = new LiczbaZespolona(-1.753, 2.216);
             Assert.IsTrue(wynik.Equals(liczbazespolona.Odejmij(1.221, -2.332)));
+        }
+
+        [TestCategory("KalkulatorOdemowanie")]
+        [TestMethod]
+        public void OdejmowanieDwieRzeczywistaTest()
+        {
+            LiczbaZespolona liczbazespolona = new LiczbaZespolona(-0.532, -0.116);
+            LiczbaZespolona wynik = new LiczbaZespolona(-1.753, 2.216);
             Assert.AreEqual(wynik.PobierzRzeczywista(), liczbazespolona.Odejmij(1.221, -2.332).PobierzRzeczywista());
+        }
+
+        [TestCategory("KalkulatorOdemowanie")]
+        [TestMethod]
+        public void OdejmowanieDwieUjemnejUrojonaTest()
+        {
+            LiczbaZespolona liczbazespolona = new LiczbaZespolona(-0.532, -0.116);
+            LiczbaZespolona wynik = new LiczbaZespolona(-1.753, 2.216);
             Assert.AreEqual(wynik.PobierzZespolona(), liczbazespolona.Odejmij(1.221, -2.332).PobierzZespolona());
-
-            liczbazespolona = new LiczbaZespolona(-0.532, -0.116);
-            wynik = new LiczbaZespolona(-1.753, 2.216);
-            Assert.IsTrue(wynik.Equals(liczbazespolona.Odejmij(1.221, -2.332)));
-            Assert.AreEqual(wynik.PobierzRzeczywista(), liczbazespolona.Odejmij(1.221, -2.332).PobierzRzeczywista());
-            Assert.AreEqual(wynik.PobierzZespolona(), liczbazespolona.Odejmij(1.221, -2.332).PobierzZespolona());
-
-            liczbazespolona = new LiczbaZespolona(-2, 3);
-            wynik = new LiczbaZespolona(-6, 4);
-            Assert.IsTrue(wynik.Equals(liczbazespolona.Odejmij(4, -1)));
-            Assert.AreEqual(wynik.PobierzRzeczywista(), liczbazespolona.Odejmij(4, -1).PobierzRzeczywista());
-            Assert.AreEqual(wynik.PobierzZespolona(), liczbazespolona.Odejmij(4, -1).PobierzZespolona());
-
-            liczbazespolona = new LiczbaZespolona(0, 0);
-            wynik = new LiczbaZespolona(0, 0);
-            Assert.IsTrue(wynik.Equals(liczbazespolona.Odejmij(0, 0)));
-            Assert.AreEqual(wynik.PobierzRzeczywista(), liczbazespolona.Odejmij(0, 0).PobierzRzeczywista());
-            Assert.AreEqual(wynik.PobierzZespolona(), liczbazespolona.Odejmij(0, 0).PobierzZespolona());
         }
 
         [TestCategory("Kalkulator")]
@@ -142,47 +307,56 @@ namespace MojProjekt.Test
         }
 
         [TestMethod]
-        [TestCategory("Kalkulator")]
-        public void ObliczModulTest()
+        [TestCategory("KalkulatorModul")]
+        public void ObliczModulDwochDodatnichTest()
         {
-            LiczbaZespolona liczbazespolona;
-
-            liczbazespolona = new LiczbaZespolona(3, 4);
+            LiczbaZespolona liczbazespolona = new LiczbaZespolona(3, 4);
             double wynik = 5;
             Assert.AreEqual(wynik, liczbazespolona.ObliczModul());
+        }
 
-            liczbazespolona = new LiczbaZespolona(2, 0);
-            wynik = 2;
+        [TestMethod]
+        [TestCategory("KalkulatorModul")]
+        public void ObliczModulDodatniejTest()
+        {
+            LiczbaZespolona liczbazespolona = new LiczbaZespolona(2, 0);
+            double wynik = 2;
             Assert.AreEqual(wynik, liczbazespolona.ObliczModul());
+        }
 
-            liczbazespolona = new LiczbaZespolona(-2, 0);
-            wynik = 2;
+        [TestMethod]
+        [TestCategory("KalkulatorModul")]
+        public void ObliczModulUjemnejTest()
+        {
+            LiczbaZespolona liczbazespolona = new LiczbaZespolona(-2, 0);
+            double wynik = 2;
             Assert.AreEqual(wynik, liczbazespolona.ObliczModul());
+        }
 
-            liczbazespolona = new LiczbaZespolona(0, 5);
-            wynik = 5;
+        [TestMethod]
+        [TestCategory("KalkulatorModul")]
+        public void ObliczModulDodatniejIUjemnejTest()
+        {
+            LiczbaZespolona liczbazespolona = new LiczbaZespolona(-5, 12);
+            double wynik = 13;
             Assert.AreEqual(wynik, liczbazespolona.ObliczModul());
+        }
 
-            liczbazespolona = new LiczbaZespolona(0, -5);
-            wynik = 5;
+        [TestMethod]
+        [TestCategory("KalkulatorModul")]
+        public void ObliczModulDwochUjemnychTest()
+        {
+            LiczbaZespolona liczbazespolona = new LiczbaZespolona(-5, -12);
+            double wynik = 13;
             Assert.AreEqual(wynik, liczbazespolona.ObliczModul());
-            
-            //testowanie jak to jest z ujemnymi liczbami
-            liczbazespolona = new LiczbaZespolona(-5, 12);
-            wynik = 13;
-            Assert.AreEqual(wynik, liczbazespolona.ObliczModul());
+        }
 
-            liczbazespolona = new LiczbaZespolona(5, -12);
-            wynik = 13;
-            Assert.AreEqual(wynik, liczbazespolona.ObliczModul());
-
-            liczbazespolona = new LiczbaZespolona(-5, -12);
-            wynik = 13;
-            Assert.AreEqual(wynik, liczbazespolona.ObliczModul());
-
-            //Testowanie dla niepoprawnej wartosci
-            liczbazespolona = new LiczbaZespolona(-5, -12);
-            wynik = 14;
+        [TestMethod]
+        [TestCategory("KalkulatorModul")]
+        public void ObliczModulNiepoprawnyTest()
+        {
+            LiczbaZespolona liczbazespolona = new LiczbaZespolona(-5, -12);
+            double wynik = 14;
             Assert.AreNotEqual(wynik, liczbazespolona.ObliczModul());
         }
 

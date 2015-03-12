@@ -75,8 +75,8 @@ namespace MojProjekt
         public LiczbaZespolona Pomnoz(double x, double y)
         {
             LiczbaZespolona nowa = new LiczbaZespolona();
-            nowa.x = this.x - x;
-            nowa.y = this.y - y;
+            nowa.x = this.x * x - this.y * y;
+            nowa.y = this.y * x + this.x * y;
             return nowa;
         }
 
